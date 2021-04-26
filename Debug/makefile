@@ -9,6 +9,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include USB_DEVICE/Target/subdir.mk
+-include USB_DEVICE/App/subdir.mk
+-include Middleware/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
+-include Middleware/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
 -include Drivers/STM32L4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -61,8 +65,8 @@ all: main-build
 main-build: Test_Security.elf secondary-outputs
 
 # Tool invocations
-Test_Security.elf: $(OBJS) $(USER_OBJS) C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\STM32L475VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Test_Security.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test_Security.map" -Wl,--gc-sections -static -Wl,--start-group -l"C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto\Lib\STM32CryptographicV3.0.0_CM4_GCC.a" -l"C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto_AccHw\Lib\STM32AccHwCryptoV3.1.0_L4_GCC.a" -Wl,--end-group -L"C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto\Lib" -L"C:\Users\vnguyen\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto_AccHw\Lib" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Test_Security.elf: $(OBJS) $(USER_OBJS) C:\Users\vinhh\STM32CubeIDE\workspace_1.6.0\Test_Security\STM32L475VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Test_Security.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\vinhh\STM32CubeIDE\workspace_1.6.0\Test_Security\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test_Security.map" -Wl,--gc-sections -static -Wl,--start-group -lSTM32CryptographicV3.0.0_CM4_GCC_FPU -lSTM32AccHwCryptoV3.1.0_L4_GCC -Wl,--end-group -L"C:\Users\vinhh\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto_AccHw\Lib" -L"C:\Users\vinhh\STM32CubeIDE\workspace_1.6.0\Test_Security\Middleware\ST\STM32_Crypto\Lib" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

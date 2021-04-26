@@ -25,10 +25,14 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rng.h \
- C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h
+ ../Core/Inc/encrypt_data.h ../Core/Inc/main.h \
+ C:/Users/vinhh/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h
 
 ../Core/Inc/main.h:
 
@@ -84,10 +88,20 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h:
 
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h:
+
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h:
+
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h:
+
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rng.h:
 
-C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h:
+../Core/Inc/encrypt_data.h:
+
+../Core/Inc/main.h:
+
+C:/Users/vinhh/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h:

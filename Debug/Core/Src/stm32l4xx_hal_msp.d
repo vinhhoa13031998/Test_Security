@@ -1,6 +1,7 @@
 Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
- ../Core/Inc/main.h ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
- ../Core/Inc/stm32l4xx_hal_conf.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/main.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h \
@@ -31,14 +32,24 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rng.h \
- ../Core/Inc/encrypt_data.h ../Core/Inc/main.h \
- C:/Users/vinhh/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/cipher/aes.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/core/crypto.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/os_port.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/os_port_config.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/compiler_port.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/crypto_config.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/core/crypto_legacy.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/cpu_endian.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/os_port.h \
+ C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/error.h
 
-../Core/Inc/main.h:
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/main.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 
-../Core/Inc/stm32l4xx_hal_conf.h:
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/stm32l4xx_hal_conf.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:
 
@@ -100,8 +111,26 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rng.h:
 
-../Core/Inc/encrypt_data.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 
-../Core/Inc/main.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 
-C:/Users/vinhh/STM32CubeIDE/workspace_1.6.0/Test_Security/Middleware/ST/STM32_Crypto/Inc/AES/CBC/aes_cbc.h:
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/cipher/aes.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/core/crypto.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/os_port.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/os_port_config.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/compiler_port.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/Core/Inc/crypto_config.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/core/crypto_legacy.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/cpu_endian.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/os_port.h:
+
+C:/Users/vnguyen/STM32CubeIDE/workspace_1.6.0/Test_securityV2/CycloneCRYPTO/common/error.h:

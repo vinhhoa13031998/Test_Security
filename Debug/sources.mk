@@ -22,9 +22,12 @@ OBJCOPY_BIN :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+CycloneCRYPTO/cipher \
+CycloneCRYPTO/cipher_mode \
+CycloneCRYPTO/common \
 Drivers/STM32L4xx_HAL_Driver/Src \
-Middleware/ST/STM32_USB_Device_Library/Class/CDC/Src \
-Middleware/ST/STM32_USB_Device_Library/Core/Src \
+Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src \
+Middlewares/ST/STM32_USB_Device_Library/Core/Src \
 USB_DEVICE/App \
 USB_DEVICE/Target \
 

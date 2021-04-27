@@ -1,21 +1,4 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -34,6 +17,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define PLAINTEXT_LENGTH 64
+#define CRL_AES192_KEY	24
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -59,13 +44,6 @@ uint8_t Sym_Key[CRL_AES192_KEY] =
     0x62, 0xf8, 0xea, 0xd2, 0x52, 0x2c, 0x6b, 0x7b,
   };
 
-/* Initialization Vector */
-uint8_t IV[CRL_AES_BLOCK] =
-  {
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
-  };
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -81,14 +59,8 @@ RNG_HandleTypeDef hrng;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_RNG_Init(void);
+static void MX_CRC_Init(void);
 
-int32_t STM32_AES_CBC_Encrypt(uint8_t*  InputMessage,
-                              uint32_t  InputMessageLength,
-                              uint8_t  *AES192_Key,
-                              uint8_t  *InitializationVector,
-                              uint32_t  IvLength,
-                              uint8_t  *OutputMessage,
-                              uint32_t *OutputMessageLength);
 /* USER CODE BEGIN PFP */
 
 
@@ -112,7 +84,8 @@ int _write(int file, char *ptr, int len)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  error_t Error;
+  AesContext Aes_Handler;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -134,38 +107,31 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_RNG_Init();
-  MX_USB_DEVICE_Init();
+  //MX_USB_DEVICE_Init();
+  MX_CRC_Init();
 
   /* USER CODE BEGIN 2 */
   /* Encrypt data */
 
-
-  //Enable CRC clock
-  SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_CRCEN);
-
-  if (__HAL_RCC_CRC_IS_CLK_ENABLED())
-  {
-	  printf("Hello World!\n");
-  }
-
-
   /* Buffer to store the output data */
-  uint8_t OutputMessage[PLAINTEXT_LENGTH];
+  uint8_t Encrypted_data[192];
 
-  /* Size of the output data */
-  uint32_t OutputMessageLength = 0;
+  uint8_t Decrypted_data[64];
 
-  int32_t status;
+  // Initialize AES Context by using fixed symmetric key
 
-  status = STM32_AES_CBC_Encrypt( (uint8_t *) Plaintext, PLAINTEXT_LENGTH, Sym_Key, IV, sizeof(IV), OutputMessage,
-                                  &OutputMessageLength);
-  if(status == AES_SUCCESS)
+  Error = aesInit(&Aes_Handler, Sym_Key, CRL_AES192_KEY);
+  if(Error != NO_ERROR )
   {
-	  for (int i = 0; i<OutputMessageLength ; i++)
-	  {
-		  printf("%d",OutputMessage[i]);
-	  }
+	  Error_Handler();
   }
+
+  // Encrypt data
+  aesEncryptBlock(&Aes_Handler, Plaintext, Encrypted_data);
+
+  // Decrypt Data
+  aesDecryptBlock(&Aes_Handler, Encrypted_data, Decrypted_data);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -248,7 +214,6 @@ void SystemClock_Config(void)
   */
 void MX_CRC_Init(void)
 {
-	__CRC_CLK_ENABLE();
 
 	hcrc.Instance = CRC;
 	hcrc.Init.DefaultInitValueUse = DEFAULT_POLYNOMIAL_ENABLE;

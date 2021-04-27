@@ -5,5 +5,5 @@
 
 USER_OBJS :=
 
-LIBS := -lSTM32CryptographicV3.0.0_CM4_GCC_FPU -lSTM32AccHwCryptoV3.1.0_L4_GCC
+LIBS :=
 

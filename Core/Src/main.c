@@ -8,6 +8,8 @@
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
+#include "time.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +46,9 @@ uint8_t Sym_Key[CRL_AES192_KEY] =
     0x62, 0xf8, 0xea, 0xd2, 0x52, 0x2c, 0x6b, 0x7b,
   };
 
+uint8_t Random_key[24];
+
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -60,6 +65,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_RNG_Init(void);
 static void MX_CRC_Init(void);
+void Key_Generate(uint8_t Key_length);
 
 /* USER CODE BEGIN PFP */
 
@@ -118,9 +124,11 @@ int main(void)
 
   uint8_t Decrypted_data[64];
 
-  // Initialize AES Context by using fixed symmetric key
+  //Generate a random key
+  Key_Generate(24);
 
-  Error = aesInit(&Aes_Handler, Sym_Key, CRL_AES192_KEY);
+  // Initialize AES Context by using a random symmetric key
+  Error = aesInit(&Aes_Handler, Random_key, CRL_AES192_KEY);
   if(Error != NO_ERROR )
   {
 	  Error_Handler();
@@ -131,6 +139,8 @@ int main(void)
 
   // Decrypt Data
   aesDecryptBlock(&Aes_Handler, Encrypted_data, Decrypted_data);
+
+
 
   /* USER CODE END 2 */
 
@@ -279,6 +289,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void Key_Generate(uint8_t Key_length)
+{
+	// Generate a random number between 0 and 255 (8-bit number)
+    for (int i=0 ; i< Key_length ; i++)
+    {
+    	Random_key[i] = (uint8_t)(rand() % 256);
+    }
+}
 /* USER CODE END 4 */
 
 /**
